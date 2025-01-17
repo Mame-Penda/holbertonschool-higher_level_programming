@@ -2,7 +2,9 @@
 if __name__ == "__main__":
 
     import sys
-    total = 0
-    for i in range(len(sys.argv) - 1):
-        total += int(sys.argv[i + 1])
-        print("{}".format(total))
+    argc = len(sys.argv)
+    argv = sys.argv
+
+    for i in range(1, argc):
+        argv[i] = int(argv[i])
+        print(sum(argv[1:]))
