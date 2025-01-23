@@ -1,6 +1,4 @@
 #!/usr/bin/python3
 def multiply_by_2(a_dictionary):
-    new_dictionary = a_dictionary.copy()
-    for key in new_dictionary:
-        new_dictionary[key] *= 2
-        return new_dictionary
+    def multiply_by_2(a_dictionary):
+     return ({k: a_dictionary[k] * 2 for k in a_dictionary})
