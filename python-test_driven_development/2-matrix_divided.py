@@ -6,6 +6,7 @@ The function ensures that all rows of the matrix are of the same size
 and that division is performed element-wise.
 """
 
+
 def matrix_divided(matrix, div):
     """Divide all elements of matrix.
 
