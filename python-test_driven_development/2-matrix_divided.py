@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+
+"""
+This module contains a function that divides all elements of a matrix.
+The function ensures that all rows of the matrix are of the same size
+and that division is performed element-wise.
+"""
+
 def matrix_divided(matrix, div):
     """Divide all elements of matrix.
 
