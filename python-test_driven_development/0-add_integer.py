@@ -26,4 +26,3 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer")
     # Use round() to ensure proper rounding
     return int(round(a)) + int(round(b))
-    
