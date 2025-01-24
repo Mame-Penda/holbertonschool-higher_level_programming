@@ -3,20 +3,17 @@ Test cases for text_indentation function
 >>> text_indentation = __import__('5-text_indentation').text_indentation
 >>> text_indentation("Hello. World?")
 Hello.
-
+<BLANKLINE>
 World?
-
 >>> text_indentation("Python: The best language!")
 Python:
-
+<BLANKLINE>
 The best language!
-
 >>> text_indentation("")
 >>> text_indentation("   Space before text. More space?")
 Space before text.
-
+<BLANKLINE>
 More space?
-
 >>> text_indentation(42)
 Traceback (most recent call last):
     ...
