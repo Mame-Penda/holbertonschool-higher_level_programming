@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-""" creates an empty square."""
+"""Define a class square."""
 
 
-class square:
-    """Represent a empty square
-    """
-    def __init__(self):
-        self
+class Square:
+    """Represent a empty square."""
+
+    pass
