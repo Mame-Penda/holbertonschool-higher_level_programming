@@ -3,7 +3,10 @@
 
 
 class Rectangle:
-    """Represent a rectangle."""
+    """Represent a rectangle.
+    Properties: width and height.
+    Area and Perimeter methods.
+    """
 
     def __init__(self, width=0, height=0):
         self.width = width
