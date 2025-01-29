@@ -2,7 +2,7 @@
 """ This module creates a Class Rectangle that defines a rectangle."""
 
 
-class Square:
+class Rectangle:
     """
     class Rectangle that defines a rectangle.
     Properties: width and height.
