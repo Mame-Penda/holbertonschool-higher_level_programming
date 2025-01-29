@@ -6,6 +6,7 @@ class Rectangle:
     """
     class Rectangle that defines a rectangle.
     Properties: width and height.
+    Area and Perimeter methods
     """
 
     def __init__(self, width=0, height=0):
