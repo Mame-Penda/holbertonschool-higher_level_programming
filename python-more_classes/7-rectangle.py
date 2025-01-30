@@ -9,6 +9,7 @@ class Rectangle:
     Area and Perimeter methods.
     Print, str, repr and del methods.
     Number of instances.
+    Number of instances and Print symbol.
     """
     number_of_instances = 0
     print_symbol = '#'
