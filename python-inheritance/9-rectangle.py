@@ -1,7 +1,5 @@
 #!/usr/bin/python3
 """Module for the BaseGeometry class."""
-
-
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
@@ -16,8 +14,8 @@ class Rectangle(BaseGeometry):
         height (int): The height of the new Rectangle.
         """
         super().integer_validator("width", width)
-        super().integer_validator("height", height)
         self.__width = width
+        super().integer_validator("height", height)
         self.__height = height
 
         def area(self):
