@@ -1,11 +1,14 @@
 #!/usr/bin/python3
 
 
-class CountedIterator():
-    def __init__(self, object):
-        if not hasattr(object, '__iter__'):
-            raise TypeError
-        self.iterator = iter(object)
+class CountedIterator:
+    def __init__(self, iterable):
+        """Initialize the iterable.
+
+        Args:
+        iterable: an iterable
+        """
+        self.iterator = iter(iterable)
         self.counter = 0
 
         def __next__(self):
