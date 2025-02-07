@@ -1,51 +1,54 @@
 #!/usr/bin/python3
-"""Interfaces, and Duck Typing"""
+""" Duck Typing """
 from abc import ABC, abstractmethod
 import math
 
 
-class shape (ABC):
-     @abstractmethod
-     def area(self):
-      """Area method."""
-pass
+class Shape(ABC):
+    """ Shape class """
+    @abstractmethod
+    def area(self):
+        """ Area method """
+        pass
 
-class perimeter (ABC):
     @abstractmethod
     def perimeter(self):
-     """Perimeter method."""
-pass
-
-class Circle(shape):
-   """Circle class."""
-   def __init__(self, radius):
-    """the constructor shape."""
-    self.radius = radius
-   def area(self):
-    """Calcul and return area circle."""
-    return math.pi * self.radius ** 2
-
-   def perimeter(self):
-    """Calcul and return perimeter circle."""
-    return 2 * math.pi * self.radius
+        """ Perimeter method """
+        pass
 
 
-class Rectangle(shape):
-  """Class of rectangle."""
-  def __init__(self, width, height):
-    """initialize Rectangle."""
-    self.width = width
-    self.height = height
+class Circle(Shape):
+    """ Circle class """
+    def __init__(self, radius):
+        """ Circle constructor """
+        self.radius = abs(radius)
 
-  def area(self):
-   """Calcule and return area of the Rectangle."""
-   return self.width * self.height
+    def area(self):
+        """ Area method """
+        return math.pi * (self.radius ** 2)
 
-  def perimeter(self):
-   """Calcul and return perimeter of the rectangle."""
-   return 2 * (self.width + self.height)
+    def perimeter(self):
+        """ Perimeter method """
+        return 2 * math.pi * self.radius
 
-  def shape(shape):
-   """Print area and perimeter."""
-   print(f"Area: {shape.area()}")
-   print(f"Perimeter: {shape.perimeter()}")
+
+class Rectangle(Shape):
+    """ Rectangle class """
+    def __init__(self, width, height):
+        """ Rectangle constructor """
+        self.width = width
+        self.height = height
+
+    def area(self):
+        """ Area method """
+        return self.width * self.height
+
+    def perimeter(self):
+        """ Perimeter method """
+        return 2 * (self.width + self.height)
+
+
+def shape_info(shape):
+    """ Shape info function """
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
