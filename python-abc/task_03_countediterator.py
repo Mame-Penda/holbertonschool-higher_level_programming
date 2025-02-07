@@ -1,20 +1,37 @@
-#!/usr/bin/python3
-
-
 class CountedIterator:
+    """
+    Une classe qui étend un itérateur standard en comptant le nombre itérés.
+    """
+
     def __init__(self, iterable):
-        """Initialize the iterable.
+        """
+        Initialise l'itérateur avec un itérable donné et un compteur à zéro.
 
         Args:
-        iterable: an iterable
+            iterable: Un itérable (par exemple, une liste, un tuple, etc.).
         """
-        self.iterator = iter(iterable)
-        self.counter = 0
+        self.iterator = iter(iterable)  # Convertit l'itérable en itérateur
+        self.counter = 0  # Initialise le compteur à zéro
 
-        def __next__(self):
-            item = next(self.iterator)
-            self.counter += 1
-            return item
+    def __next__(self):
+        """
+        Retourne l'élément suivant de l'itérateur et incrémente le compteur.
 
-        def get_count(self):
-            return self.counter
+        Returns:
+            Le prochain élément de l'itérateur.
+
+        Raises:
+            StopIteration: Si l'itérateur est épuisé.
+        """
+        item = next(self.iterator)  # Récupère le prochain élément
+        self.counter += 1  # Incrémente le compteur
+        return item
+
+    def get_count(self):
+        """
+        Retourne le nombre d'éléments itérés jusqu'à présent.
+
+        Returns:
+            int: Le nombre d'éléments itérés.
+        """
+        return self.counter
