@@ -1,4 +1,4 @@
-#!/usr/bin/pytho3
+#!/usr/bin/python3
 """Defines for from string-to-JSON function."""
 import json
 
