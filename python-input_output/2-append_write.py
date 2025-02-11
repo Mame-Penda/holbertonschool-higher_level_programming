@@ -1,5 +1,5 @@
 #!/usr/bin/pytho3
-"""Defines a text files-reading function."""
+"""Defines a file-appending function."""
 
 
 def append_write(filename="", text=""):
@@ -11,5 +11,5 @@ def append_write(filename="", text=""):
     Returns:
     The number of characters appended.
     """
-    with open(filename, "a", encoding="utf-8") as file:
-        return file.write(text)
+    with open(filename, "a", encoding="utf-8") as f:
+        return f.write(text)
