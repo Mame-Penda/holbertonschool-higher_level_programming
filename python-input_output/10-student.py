@@ -12,11 +12,11 @@ class Student:
         self.age = age
 
     def to_json(self, attrs=None):
-            """Get a dictionary representation of the student."""
-            if attrs is None:
-                 return {key: self.__dict__[key] for key in sorted(self.__dict__)}
-            new_dict = {}
-            for key in sorted(attrs):
-                if key in self.__dict__:
-                  new_dict[key] = self.__dict__[key]
-            return new_dict
+        """retrieves a dictionary representation of a Student instance"""
+        if attrs is None:
+            return {key: self.__dict__[key] for key in sorted(self.__dict__)}
+        new_dict = {}
+        for key in sorted(attrs):
+            if key in self.__dict__:
+                new_dict[key] = self.__dict__[key]
+        return new_dict
