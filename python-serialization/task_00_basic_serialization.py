@@ -8,10 +8,12 @@ def serialize_and_save_to_file(data, filename):
     with open(filename, 'w+', encoding="utf-8") as f:
         data = json.dumps(data)
         f.write(data)
-        pass
+    pass
 
 
 def load_and_deserialize(filename):
     """deserialize the JSON file to recreate the python Dinctionary."""
     with open(filename, 'r', encoding="utf-8") as f:
         data = f.read()
+        return json.loads(data)
+    pass
