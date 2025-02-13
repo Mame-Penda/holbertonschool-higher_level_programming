@@ -11,11 +11,11 @@ def serialize_to_xml(dictionary, filename):
         child = ET.SubElement(root, key)
         child.text = str(value)
 
-        xml_str = ET.tostring(root)
-        formatted_xml = minidom.parseString(xml_str).toprettyxml(indent="    ")
+    xml_str = ET.tostring(root)
+    formatted_xml = minidom.parseString(xml_str).toprettyxml(indent="    ")
 
-        with open(filename, 'w+') as f:
-            f.write(formatted_xml)
+    with open(filename, 'w+') as f:
+        f.write(formatted_xml)
 
 
 def deserialize_from_xml(filename):
