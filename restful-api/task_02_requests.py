@@ -31,6 +31,6 @@ def fetch_and_save_posts():
         writer.writerows(data)
         print("Data saved to posts.csv")
 
-        if __name__ == "__main__":
-            fetch_and_print_posts()
-            fetch_and_save_posts()
+    if __name__ == "__main__":
+        fetch_and_print_posts()
+        fetch_and_save_posts()
