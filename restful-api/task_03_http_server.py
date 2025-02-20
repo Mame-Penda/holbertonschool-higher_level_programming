@@ -7,6 +7,7 @@ import json
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
     def send_text(self, data, status=200):
+        """send text"""
         self.send_response(status)
         self.send_header("Content-type", "text/json")
         self.end_headers()
