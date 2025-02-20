@@ -1,5 +1,5 @@
 #!usr/bin/python3
-"""Develop a simple API using Python with the `http.server` modulea
+"""Develop a simple API using Python with the `http.server` module
 """
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
