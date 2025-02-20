@@ -1,27 +1,41 @@
 #!/usr/bin/python3
-"""Consuming and processing data from an API using Python."""
+"""
+Un script Python basique pour récupérer des posts de
+JSONPlaceholder en utilisant requests
+"""
+
 import requests
 import csv
 
-response = requests.get("https://jsonplaceholder.typicode.com/posts")
-statuscode = response.status_code
-
 
 def fetch_and_print_posts():
-    """Fetches posts from JSONPlaceholder and prints the titles."""
+    """Récupérer les posts et imprimer leurs titres"""
+    url = "https://jsonplaceholder.typicode.com/posts"
+    response = requests.get(url)
+    print("Status Code: {}".format(response.status_code))
     if response.status_code == 200:
         posts = response.json()
         for post in posts:
             print(post["title"])
+    else:
+        print("Échec de la récupération des posts")
 
 
 def fetch_and_save_posts():
-    """Fetches posts, structures the data, and saves it to a csv file."""
+    """Récupérer les posts et les enregistrer dans un fichier CSV"""
+    url = "https://jsonplaceholder.typicode.com/posts"
+    response = requests.get(url)
+    print("Status Code: {}".format(response.status_code))
     if response.status_code == 200:
-        with open("posts.csv", "w", newline="", encoding="utf-8") as csvfile:
-            fieldnames = ["id", "title", "body"]
+        posts = response.json()
+        fieldnames = ["id", "title", "body"]
+        with open('posts.csv', mode="w", encoding="utf-8",
+                  newline="") as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
             writer.writeheader()
-            for post in response.json():
-                writer.writerows([{key: post[key] for key in fieldnames}])
+            for post in posts:
+                writer.writerow({"id": post["id"], "title":
+                                 post["title"], "body": post["body"]})
+        print("Les posts ont été enregistrés dans 'posts.csv'")
+    else:
+        print("Échec de la récupération des posts")
