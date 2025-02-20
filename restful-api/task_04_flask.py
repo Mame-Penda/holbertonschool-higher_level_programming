@@ -4,6 +4,9 @@ from flask import Flask, request, jsonify
 
 
 app = Flask(__name__)
+"""recurement"""
+
+
 users = {}
 
 
@@ -28,20 +31,24 @@ def send_status():
 @app.route('/users/<username>')
 def get_user(username):
     """Return a user data"""
-    if username in users:
-        return jsonify(users[username])
-    return jsonify({"error": "User not found"}), 404
+    user = users.get(username)
+    if user:
+        return jsonify(users)
+    else:
+        return jsonify({"error": "User not found"}), 404
 
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
     """Return user in users."""
-    data = request.get_json()
-    if not data or "username" not in data:
+    user_data = request.get_json()
+    if not user_data or "username" not in user_datadata:
         return jsonify({"error": "USername is required"}), 400
-    users[data["Username"]] = data
-    return jsonify({"message": "User added", "user": data}), 201
+
+    username = user_data["username"]
+    users[username] = user_data
+    return jsonify({"message": "User added", "user": user_data}), 201
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
