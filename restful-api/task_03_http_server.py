@@ -7,7 +7,7 @@ import json
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
     def send_text(self, data, status=200):
-        """send text"""
+        """send"""
         self.send_response(status)
         self.send_header("Content-type", "text/json")
         self.end_headers()
@@ -36,17 +36,17 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         else:
             self.send_text("Endpoint not found", 404)
 
-    def run_server(host="localhost", port=8000):
-        """Starts the HTTP server"""
-        server = HTTPServer((host, port), SimpleAPIHandler)
-        print(f"Server started at http://{host}:{port}")
+def run_server(host="localhost", port=8000):
+    """Starts the HTTP server"""
+    server = HTTPServer((host, port), SimpleAPIHandler)
+    print("Server started at http://{}:{}".format(host, port))
 
-        try:
-            server.serve_forever()
+    try:
+        server.serve_forever()
 
-        except KeyboardInterrupt:
-            print("\nShutting down server...")
-            server.server_close()
+    except KeyboardInterrupt:
+        print("\nShutting down server...")
+        server.server_close()
 
-    if __name__ == "__main__":
+if __name__ == "__main__":
         run_server()
