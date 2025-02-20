@@ -36,17 +36,12 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
         else:
             self.send_text("Endpoint not found", 404)
 
-def run_server(host="localhost", port=8000):
-    """Starts the HTTP server"""
-    server = HTTPServer((host, port), SimpleAPIHandler)
-    print("Server started at http://{}:{}".format(host, port))
+def run(server_class=HTTPServer,
+        handler_class=SimpleAPIHandler, port=8000):
+    server_address = ('', port)
+    httpd = server_class(server_address, handler_class)
+    print("Starting server on port {}".format(port))
+    httpd.serve_forever()
 
-    try:
-        server.serve_forever()
-
-    except KeyboardInterrupt:
-        print("\nShutting down server...")
-        server.server_close()
-
-if __name__ == "__main__":
-        run_server()
+if __name__ == '__main__':
+    run()
