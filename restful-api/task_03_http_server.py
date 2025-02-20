@@ -42,7 +42,6 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
 
-
 def run(server_class=HTTPServer,
         handler_class=SimpleHTTPRequestHandler, port=8000):
     server_address = ('', port)
