@@ -16,7 +16,6 @@ if __name__ == "__main__":
     rows = curs.fetchall()
 
     for row in rows:
-        if row[1][0] == 'N':
             print(row)
     curs.close()
     db.close()
