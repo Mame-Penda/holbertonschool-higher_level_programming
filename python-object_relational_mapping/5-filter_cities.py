@@ -26,8 +26,8 @@ if __name__ == "__main__":
     cur.execute(query)
 
     # Récupérer et afficher les résultats
-    for city in cur.fetchall():
-        print(city)
+    for cities in cur.fetchall():
+        print(", ".join(city[0] for city in cities))
 
     # Fermer le curseur et la connexion à la base de données
     cur.close()
