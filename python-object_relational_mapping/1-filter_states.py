@@ -12,10 +12,10 @@ if __name__ == "__main__":
         port=3306
     )
     curs = db.cursor()
-    curs.execute("SELECT * FROM states ORDER BY id ASC")
-    row = curs.fetchall()
+    curs.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    rows = curs.fetchall()
 
-    for row in curs:
+    for row in rows:
         if row[1][0] == 'N':
             print(row)
     curs.close()
