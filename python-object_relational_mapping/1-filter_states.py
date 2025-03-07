@@ -17,8 +17,8 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     # Exécuter la requête pour récupérer tous les états triés par id
-    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC;")
-
+    query = "SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC;"
+    cur.execute(query)
     # Récupérer et afficher les résultats
     for state in cur.fetchall():
         print(state)
