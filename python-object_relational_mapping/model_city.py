@@ -1,27 +1,15 @@
 #!/usr/bin/python3
-"""deletes all State object"""
-import sys
-from model_state import Base, State
-from model_city import City
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+""" class definition of as City and an instance Base"""
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+from model_state import Base
+Base = declarative_base()
 
-if __name__ == '__main__':
-    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
-                           .format(sys.argv[1],
-                                   sys.argv[2],
-                                   sys.argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(engine)
 
-    Session = sessionmaker(engine)
-    session = Session()
+class City(Base):
+    """class City"""
+    __tablename__ = 'cities'
 
-    cities = (
-        session.query(City, State)
-        .filter(City.state_id == State.id)
-        .order_by(City.id).all()
-    )
-
-    for cities, state in cities:
-        print("{}: ({}) {}".format(state.name, cities.id, cities.name))
-    session.close()
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey('state.id'), nullable=False)
