@@ -15,7 +15,7 @@ if __name__ == "__main__":
     curs.execute("SELECT * FROM states ORDER BY id")
     row = curs.fetchall()
 
-    for row in curs:
+    for row in row:
         print(row)
     curs.close()
     db.close()
