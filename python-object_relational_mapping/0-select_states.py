@@ -12,10 +12,10 @@ if __name__ == "__main__":
         port=3306
     )
     curs = db.cursor()
-    curs.execute("SELECT * FROM states ORDER BY id")
+    curs.execute("SELECT * FROM states ORDER BY ASC")
     row = curs.fetchall()
 
-    for row in row:
+    for row in curs:
         print(row)
     curs.close()
     db.close()
