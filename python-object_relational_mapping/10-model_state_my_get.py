@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""script that prints the State object with the name passed as argument from the database hbtn_0e_6_usa"""
+"""script that prints the State object with the name passed as argument"""
 import sys
 from model_state import Base, State
 from sqlalchemy import create_engine
@@ -16,7 +16,7 @@ if __name__ == '__main__':
     session = Session()
 
     # Liste tous les objets State en les triant par id
-    state = session.query(State).filter(State.name == state_name).first()
+    state = session.query(State).filter(State.name == sys.argv[4]).first()
 
     if state:
         print(state.id)
