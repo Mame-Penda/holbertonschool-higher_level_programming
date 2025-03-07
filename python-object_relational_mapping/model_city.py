@@ -1,26 +1,27 @@
 #!/usr/bin/python3
-"""
-Defines a State and City class that link to the MySQL tables 'states' and 'cities'.
-"""
-from sqlalchemy import Column, Integer, String, ForeignKey, create_engine
-from sqlalchemy.ext.declarative import declarative_base
+"""deletes all State object"""
+import sys
+from model_state import Base, State
+from model_city import City
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
-# Create instance of declarative_base
-Base = declarative_base()
+if __name__ == '__main__':
+    engine = create_engine("mysql+mysqldb://{}:{}@localhost/{}"
+                           .format(sys.argv[1],
+                                   sys.argv[2],
+                                   sys.argv[3]), pool_pre_ping=True)
+    Base.metadata.create_all(engine)
 
-class State(Base):
-    """
-    State class that represents the 'states' table.
-    """
-    __tablename__ = 'states'
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(128), nullable=False)
+    Session = sessionmaker(engine)
+    session = Session()
 
-class City(Base):
-    """
-    City class that represents the 'cities' table.
-    """
-    __tablename__ = 'cities'
-    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(128), nullable=False)
-    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
+    cities = (
+        session.query(City, State)
+        .filter(City.state_id == State.id)
+        .order_by(City.id).all()
+    )
+
+    for cities, state in cities:
+        print("{}: ({}) {}".format(state.name, cities.id, cities.name))
+    session.close()
