@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import json
 
 app = Flask(__name__)
@@ -12,9 +12,12 @@ def home():
 
 @app.route('/items')
 def items():
-    with open('items.json') as j_file:
-        data = json.load(j_file)
-        items_list = data.get('items', [])
+    try:
+        with open('items.json') as j_file:
+            data = json.load(j_file)
+            items_list = data.get('items', [])
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        return jsonify({"error": f"Failed to load items: {str(e)}"}), 500
 
     return render_template('items.html', items=items_list)
 
