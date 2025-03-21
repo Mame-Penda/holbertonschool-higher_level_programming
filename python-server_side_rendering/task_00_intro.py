@@ -24,26 +24,26 @@ def generate_invitations(template, attendees):
               "no output files generated.")
         return
 
-    for ind, attendees in enumerate(attendees, start=1):
+    for ind, attendee in enumerate(attendees, start=1):
         msg = template
         try:
-            for keys in ["name", "event_title", "event_date,"
+            for keys in ["name", "event_title", "event_date",
                          "event_location"]:
-                value = attendees.get(keys, "N/A")
+                value = attendee.get(keys, "N/A")
                 msg = msg.replace(f"{{{keys}}}",
                                   value if value is not None else "N/A")
 
-                out_file = f"output_{ind}.txt"
-                if os.path.exists(out_file):
-                    print("The file {out_file} are already exists,")
-                    continue
+            out_file = f"output_{ind}.txt"
+            if os.path.exists(out_file):
+                print(f"The file {out_file} already exists,")
+                continue
 
-                with open(out_file, 'W') as invitation:
-                    invitation.write(msg)
+            with open(out_file, 'w') as invitation:
+                invitation.write(msg)
 
-                    print(f"The file {out_file} has genereted")
+            print(f"The file {out_file} has been generated")
 
         except Exception as error:
             print("Missing Data in object: "
-                  "An error occured while, creating the "
-                  f"invitation, for {attendees.get('name', 'N/A')}: {error}")
+                  "An error occurred while creating the "
+                  f"invitation for {attendee.get('name', 'N/A')}: {error}")
